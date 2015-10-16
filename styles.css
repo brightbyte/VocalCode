@@ -1,0 +1,9 @@
+.vcSyntaxBox {
+	border: 1px solid #AAA;
+	padding: 1ex;
+	margin: 0;
+}
+
+.vcHighlight {
+	background-color: yellow;
+}
