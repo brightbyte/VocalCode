@@ -119,8 +119,13 @@ window.VocalCodeChunkStream = function( root ) {
 					return null; // EOF
 				}
 
-				[ text, style ] = line;				
-				[ , linebreaks, prefix, text ] = prefixSplitRegex.exec( text );
+				text = line[0];
+				style = line[1];				
+				
+				var split = prefixSplitRegex.exec( text );
+				linebreaks = split[1];
+				prefix = split[2];
+				text = split[3];
 				
 				if ( this._indent == null || linebreaks.length > 0 ) {
 					this._indent = prefix;
@@ -218,8 +223,7 @@ window.vocalcode = function( meSpeak ) {
 				var frame = stream.nextFrame()
 				
 				if ( frame ) {
-					var indent, text, style;
-					[ indent, text, style ] = frame;
+					var indent = frame[0], text = frame[1], style = frame[2];
 
 					var options = {
 						variant: 'm1',
